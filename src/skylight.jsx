@@ -37,6 +37,8 @@ export default class SkyLight extends React.Component {
   }
 
   hide() {
+    if (!this.props.isClosable) return;
+
     this.setState({ isVisible: false });
   }
 

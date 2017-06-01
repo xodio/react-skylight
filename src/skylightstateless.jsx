@@ -16,7 +16,7 @@ export default class SkyLightStateless extends React.Component {
   }
 
   render() {
-    const { isVisible } = this.props;
+    const { isVisible, isClosable } = this.props;
 
     let overlay;
     if (this.props.showOverlay) {
@@ -33,13 +33,15 @@ export default class SkyLightStateless extends React.Component {
         {overlay}
         <div className="skylight-dialog">
           <div className="skylight-dialog-header">
-            <a
-              role="button"
-              className="skylight-close-button"
-              onClick={() => this.onCloseClicked()}
-            >
-              &times;
-            </a>
+            {isClosable && (
+              <a
+                role="button"
+                className="skylight-close-button"
+                onClick={() => this.onCloseClicked()}
+              >
+                &times;
+              </a>
+            )}
             <h2 className="skylight-title">{this.props.title}</h2>
           </div>
           {this.props.children}
@@ -52,6 +54,7 @@ export default class SkyLightStateless extends React.Component {
 SkyLightStateless.displayName = 'SkyLightStateless';
 
 SkyLightStateless.sharedPropTypes = {
+  isClosable: PropTypes.bool,
   onCloseClicked: PropTypes.func,
   onOverlayClicked: PropTypes.func,
   showOverlay: PropTypes.bool,
@@ -64,6 +67,7 @@ SkyLightStateless.propTypes = {
 };
 
 SkyLightStateless.defaultProps = {
-  title: '',
+  isClosable: true,
   showOverlay: true,
+  title: '',
 };
