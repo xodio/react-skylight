@@ -8,7 +8,6 @@ module.exports = config => {
     files: [
       './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
       'test/**/*.spec.jsx',
-      'test/assign.spec.js',
     ],
     exclude: [],
     preprocessors: {
